@@ -1,6 +1,10 @@
 # Quan sát vạch ô đỗ
 
-- Hai vạch `parking_line` đã vẽ (mô tả vị trí trong ảnh): TODO
-- Một vạch/dấu sơn hoặc biên **không** vẽ, và vì sao: TODO
-- Polygon `free_space` dừng ở đâu; có phần bị che nào không: TODO
-- Ca chưa chắc cần hỏi người soát (nếu không có, ghi “không có”): TODO
+Task CVAT: `Day11 · parking_line · public-sample` (task #22, chỉ nạp `parking-lot-core.jpg`, 960×720). Export CVAT for images 1.1, không kèm ảnh.
+
+- Hai vạch `parking_line` đã vẽ (mô tả vị trí trong ảnh):
+  1. Vạch trắng tiền cảnh ở giữa–dưới ảnh, từ đầu vạch (≈402,652) chạy chéo xuống mép dưới khung (≈537,719). Đây là vạch ngăn giữa hai ô của dãy ô gần camera; đầu trên của nó là đầu ô, không nối sang dãy phía xa. Polyline dừng ở mép ảnh vì phần sơn tiếp theo nằm ngoài khung.
+  2. Vạch trắng tiền cảnh bên phải, từ đầu vạch (≈695,623) chạy chéo tới mép phải ảnh (≈958,684). Cùng hướng và cùng khoảng cách với vạch 1 nên là ranh giới ô kế bên trong cùng dãy ô.
+- Một vạch/dấu sơn hoặc biên **không** vẽ, và vì sao: vạch trắng mảnh chạy gần như nằm ngang suốt bề rộng ảnh ở y≈505–545 (từ mép trái tới x≈830). Nó là đường cuối/đầu của dãy ô giữa bãi (nơi các vạch chéo ngắn chạm vào), không tự tạo ranh giới giữa hai ô riêng lẻ, nên không gán `parking_line` theo định nghĩa của bài. Tôi cũng không vẽ các vạch ở dải bãi xa (y≈465–500) vì nhỏ, sáng lóa và khó tách từng ô.
+- Polygon `free_space` dừng ở đâu; có phần bị che nào không: vùng mặt nhựa trống giữa dãy ô gần camera và dãy ô ở giữa bãi (lối xe chạy), từ x≈65 tới x≈880, y≈568–668. Cạnh trên dừng dưới đầu mút các vạch chéo của dãy giữa (y≈560) và vạch dọc ngắn bên trái (x≈45–60, kết thúc y≈572); cạnh dưới đi theo đầu mút các vạch tiền cảnh (≈398,648 và ≈690,617). Không có xe, curb hay cây trong vùng này; xe đỏ duy nhất ở xa (≈195–220, 457–478) nằm ngoài polygon. Polygon chỉ là nhận xét trên ảnh tĩnh, không kết luận xe có thể đi an toàn.
+- Ca chưa chắc cần hỏi người soát (nếu không có, ghi “không có”): vạch ngắn ở góc trái dưới (≈20,682 → 37,720) có thể là vạch chia ô của dãy tiền cảnh nhưng chỉ thấy một đoạn ngắn sát mép; tôi không vẽ vì chưa chắc nó thuộc cùng dãy ô. Ảnh đối chiếu `parking-lot-contrast.png` giúp phân biệt: vạch song song ngắn ở tiền cảnh chia ô, còn dải nhựa giữa hai dãy (không có vạch ngang chia) là lối xe chạy.

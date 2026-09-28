@@ -1,9 +1,9 @@
 camera_id,slice_type,frames,risk,rationale
-front,normal,,TODO,TODO
-front,hard,,TODO,TODO
-rear,normal,,TODO,TODO
-rear,hard,,TODO,TODO
-left,normal,,TODO,TODO
-left,hard,,TODO,TODO
-right,normal,,TODO,TODO
-right,hard,,TODO,TODO
+front,normal,22,"Trung bình: xe/người ở center–mid, ít méo","Làm mốc ổn định cho so sánh; lấy từ nhiều chuyến/giờ khác nhau, tối đa 1 frame mỗi 5 giây của cùng cảnh để không đếm frame liền nhau như ca độc lập."
+front,hard,30,"Cao: auto/e-rickshaw và rider dày đặc, xe tải cắt biên, vật ở ngưỡng 40 px","ADASIND cho thấy lỗi class ThreeWheeler/Truck và rider (R03/R04) nhiều nhất ở camera trước; chọn cảnh đông, ngược sáng, đêm, mưa và vật bị khung/vòng kính cắt."
+rear,normal,18,"Thấp–trung bình: xe theo sau, ít vật gần","Ít tương tác nhất khi xe chạy thẳng; đủ để kiểm ego_body (cản sau, móc kéo) và lens_border mỗi phiên."
+rear,hard,28,"Cao: lùi/đỗ xe, người và xe đạp sát đuôi xe, vạch đỗ, ánh đèn pha phía sau ban đêm","Ca lùi đỗ là nơi SVM dùng nhiều nhất; vật rất gần ở rìa ảnh bị méo mạnh và dễ nằm trong vùng ego_body; cần cả parking_line/free_space."
+left,normal,18,"Trung bình: lề đường, xe đỗ song song","Mốc cho camera hông; gương chiếu hậu (ego_body) xuất hiện ở mọi frame nên cần kiểm polygon ego ổn định."
+left,hard,32,"Cao: người đi bộ, hàng rong, xe máy sát lề trong giao thông bên trái; seam trước-trái và trái-sau","Phía lề trong giao thông đi bên trái có nhiều người và vật tĩnh gần xe nhất; vật bị méo cong ở rìa và xuất hiện ở hai camera tại seam."
+right,normal,20,"Trung bình: làn bên cạnh, xe ngược chiều xa","Mốc cho camera phải; lấy ở nhiều loại đường để tách lỗi camera khỏi lỗi cảnh."
+right,hard,32,"Cao: xe máy/auto vượt sát, bị che và cắt biên liên tục; seam trước-phải và phải-sau","Vật di chuyển nhanh qua seam sinh ca một-vật-hai-box và nối track; cần timestamp để ghép với camera trước/sau."
